@@ -1,4 +1,4 @@
-<section class="callto-section set-bg" data-setbg="<?php echo get_field('pink-banner_bg', 'options')['url'] ?>">
+<section class="callto-section set-bg" data-setbg="<?php echo get_field('pink-banner_bg', 'options')['sizes']['2048x2048'] ?>">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 m-auto">

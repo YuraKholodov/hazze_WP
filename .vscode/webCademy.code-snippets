@@ -250,9 +250,11 @@
     "description": "Picture and retina"
   },
 
+  // PHP ===================================
+
   "PHP": {
     "prefix": "php",
     "body": ["<?php ${1} ?>"],
-    "description": "Picture and retina"
+    "description": "Open PHP Tag"
   }
 }

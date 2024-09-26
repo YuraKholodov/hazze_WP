@@ -6,7 +6,7 @@ get_header()
 ?>
 
 <!-- Hero Section Begin -->
-<section class="hero-section set-bg" data-setbg="<?php the_field('hero_background') ?>">
+<section class="hero-section set-bg" data-setbg="<?php echo get_field('hero_background')['sizes']['2048x2048'] ?>">
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
@@ -30,7 +30,7 @@ get_header()
     <div class="row">
       <div class="col-lg-6">
         <div class="as-pic">
-          <img src="<?php echo get_field('about_img')['url'] ?>" alt="<?php echo get_field('about_img')['alt'] ?>" />
+          <img src="<?php echo get_field('about_img')['sizes']['large'] ?>" alt="<?php echo get_field('about_img')['alt'] ?>" />
         </div>
       </div>
       <div class="col-lg-6">
@@ -70,7 +70,7 @@ get_header()
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
 
-              <img src="<?php the_sub_field('image'); ?>" alt="" />
+              <img src="<?php echo get_sub_field('image')['sizes']['thumbnail'] ?>" alt="<?php echo get_sub_field('image')['alt'] ?>" />
               <h4><?php the_sub_field('title'); ?></h4>
               <p>
                 <?php the_sub_field('descr'); ?>
@@ -107,7 +107,7 @@ get_header()
       <div class="col-lg-6">
         <div
           class="portfolio-item set-bg large-item"
-          data-setbg="<?php echo get_field('portfolio_image_1')['url'] ?>">
+          data-setbg="<?php echo get_field('portfolio_image_1')['sizes']['large'] ?>">
           <div class="pi-hover">
             <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
             <a
@@ -119,7 +119,7 @@ get_header()
       <div class="col-lg-6">
         <div
           class="portfolio-item set-bg"
-          data-setbg="<?php echo get_field('portfolio_image_2')['url'] ?>">
+          data-setbg="<?php echo get_field('portfolio_image_2')['sizes']['medium_large'] ?>">
           <div class="pi-hover">
             <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
             <a
@@ -131,11 +131,11 @@ get_header()
           <div class="col-md-6">
             <div
               class="portfolio-item set-bg"
-              data-setbg="<?php echo get_field('portfolio_image_3')['url'] ?>">
+              data-setbg="<?php echo get_field('portfolio_image_3')['sizes']['medium_large'] ?>">
               <div class="pi-hover">
                 <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
                 <a
-                  href="<?php echo get_field('portfolio_image_3')['url'] ?>"
+                  href="<?php echo get_field('portfolio_image_3')['sizes']['medium_large'] ?>"
                   class="search-icon image-popup"><i class="fa fa-search"></i></a>
               </div>
             </div>
@@ -143,7 +143,7 @@ get_header()
           <div class="col-md-6">
             <div
               class="portfolio-item set-bg"
-              data-setbg="<?php echo get_field('portfolio_image_4')['url'] ?>">
+              data-setbg="<?php echo get_field('portfolio_image_4')['sizes']['medium_large'] ?>">
               <div class="pi-hover">
                 <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
                 <a
@@ -175,8 +175,8 @@ get_header()
       <div class="col-lg-6">
 
         <?php
-        if (have_rows('numbers_achievements_repeater')):
-          while (have_rows('numbers_achievements_repeater')) : the_row();
+        if (have_rows('numbers_achievements-repeater')):
+          while (have_rows('numbers_achievements-repeater')) : the_row();
         ?>
 
             <div class="counter-item">
@@ -217,8 +217,8 @@ get_header()
           if ($counter % 2 == 0) {
             $isEven = true;
           }
-
       ?>
+      
           <div class="col-lg-6">
             <div class="testimonial-item" <?php if ($isEven) echo 'style="background-color: #e32879"' ?>>
               <div class="ti-pic">
