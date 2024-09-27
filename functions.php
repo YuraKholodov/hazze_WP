@@ -123,3 +123,10 @@ function foobar_shortcode()
 {
 	require 'shortcodes/pink-banner.php';
 }
+
+add_filter('excerpt_length', function () {
+	return 10;
+});
+
+// в php 7.4+ можно сократить так:
+add_filter('excerpt_more', fn() => '...');
