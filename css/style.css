@@ -819,6 +819,15 @@ ol {
   margin-right: 0;
 }
 
+.member-item .mi-text--repainter {
+  background: #e32879;
+}
+
+.member-item .mi-text--repainter > p,
+.member-item .mi-text--repainter span {
+  color: #fff !important;
+}
+
 /*---------------------
   Footer
 -----------------------*/

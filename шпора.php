@@ -1,5 +1,21 @@
 <?php echo get_template_directory_uri() ?> Получает и выводит путь к корню шаблона
 
+Вывод постов
+
+<?php $query = new WP_Query(['post_type' => 'our-team', 'post_per_page' => 3]); ?>
+
+<?php while ($query->have_posts()) {
+  $query->the_post(); ?>
+  
+  <?php the_title() ?>
+  <?php the_content() ?>
+  <?php echo get_the_post_thumbnail_url(size: 'large') ?>
+
+
+<?php }
+
+wp_reset_postdata(); // ВАЖНО вернуть global $post обратно 
+?>
 
 
 
