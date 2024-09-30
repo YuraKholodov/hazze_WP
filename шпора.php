@@ -23,6 +23,7 @@ wp_reset_postdata(); // ВАЖНО вернуть global $post обратно
 ACF =============================
 
 <?php the_field('key') ?> Получает и выводит значение
+<?php the_field('footer_menu-title', 'options') ?>
 <?php echo get_field('key')[''] ?> Получает и выводит значение
 <?php echo get_field('key', 'option')[''] ?> Получает и выводит значение из опций темы
 

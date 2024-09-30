@@ -274,7 +274,7 @@ ol {
   position: relative;
 }
 
-.main-menu ul li.current_page_item a {
+.main-menu ul li.current-menu-item a {
   color: #e32879;
 }
 
@@ -941,7 +941,7 @@ ol {
   color: #b3b3b3;
 }
 
-.footer-widget .news-form button {
+.footer-widget .news-form input[type="submit"] {
   font-size: 16px;
   color: #ffffff;
   font-weight: 700;
@@ -1013,6 +1013,10 @@ ol {
   background: #5c5c5c;
   content: "";
   border-radius: 50%;
+}
+
+.breadcrumb-option a span {
+  color: #b3b3b3;
 }
 
 .breadcrumb-option span {

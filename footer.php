@@ -5,64 +5,113 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="footer-option">
 					<div class="fo-logo">
-						<a href="#">
-							<img src="<?php echo get_template_directory_uri() ?>/img/logo.png" alt="">
+						<a href="/">
+							<img src="<?php echo get_field('header-logo', 'options')['url'] ?>" alt="<?php echo get_field('header-logo', 'options')['alt'] ?>">
 						</a>
 					</div>
 					<ul>
-						<li>Address: 60-49 Road 11378 New York</li>
-						<li>Phone: +65 11.188.888</li>
-						<li>Email: hello.colorlib@gmail.com</li>
+						<?php
+
+						// проверяем есть ли в повторителе данные
+						if (have_rows('footer_inform-repeater', 'options')):
+
+							// перебираем данные
+							while (have_rows('footer_inform-repeater', 'options')) : the_row(); ?>
+								<ul>
+									<?php if (!get_sub_field('is_link', 'options')) { ?>
+										<li>
+											<?php the_sub_field('first-text', 'options') ?>
+											<?php the_sub_field('second-text', 'options') ?>
+										</li>
+									<?php } else { ?>
+										<li>
+											<?php the_sub_field('first-text', 'options') ?>
+											<a href="<?php echo get_sub_field('link', 'options')['url'] ?>">
+												<?php echo get_sub_field('link', 'options')['title'] ?>
+											</a>
+										</li>
+									<?php } ?>
+								</ul>
+						<?php endwhile;
+
+						else :
+							// вложенных полей не найдено
+							echo 'Ошибка, поля не найдены!';
+
+						endif;
+
+						?>
 					</ul>
 					<div class="fo-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-instagram"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-pinterest"></i></a>
+						<?php
+
+						// проверяем есть ли в повторителе данные
+						if (have_rows('footer_social-repeater', 'options')):
+
+							// перебираем данные
+							while (have_rows('footer_social-repeater', 'options')) : the_row(); ?>
+
+								<a href="<?php the_sub_field('link'); ?>">
+									<i class="fa fa-<?php the_sub_field('social'); ?>"></i>
+								</a>
+
+						<?php endwhile;
+
+						else:
+
+							echo 'Ошибка, поля не найдены!!!!!!!';
+
+						endif;
+
+						?>
+
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="footer-widget fw-links">
-					<h5>Useful Links</h5>
-					<ul>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Model</a></li>
-						<li><a href="#">Contact</a></li>
-						<li><a href="#">Serivius</a></li>
-					</ul>
+					<h5><?php the_field('footer_menu-title', 'options') ?></h5>
+					<?php wp_nav_menu([
+						'theme_location'  => 'footer_menu',
+						'container'       => '',
+						'container_class' => 'main-menu mobile-menu',
+						'depth'           => 0,
+					]); ?>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="footer-widget">
-					<h5>Join The Newsletter</h5>
-					<p>Get E-mail updates about our latest shop and special offers.</p>
-					<form action="#" class="news-form">
-						<input type="text" placeholder="Enter your mail">
-						<button type="submit">Subscribe</button>
-					</form>
+					<?php echo do_shortcode('[contact-form-7 id="01cfb07" title="Контактная форма 1" html_class="news-form"]') ?>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="footer-widget">
-					<h5>Instagram</h5>
+					<h5><?php the_field('footer_gallery-title', 'options') ?></h5>
 					<div class="insta-pic">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-1.jpg" alt="">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-2.jpg" alt="">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-3.jpg" alt="">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-4.jpg" alt="">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-5.jpg" alt="">
-						<img src="<?php echo get_template_directory_uri() ?>/img/instagram/instagram-6.jpg" alt="">
+						<?php
+
+						$images = get_field('footer_gallery', 'options');
+
+						if ($images): ?>
+							<ul>
+								<?php foreach ($images as $image): ?>
+
+									<img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>">
+
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="copyright-text">
-			<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			<p>
 				Copyright &copy;<script>
 					document.write(new Date().getFullYear());
-				</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</script>
+			</p>
 		</div>
 	</div>
 </section>

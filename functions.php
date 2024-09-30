@@ -130,3 +130,5 @@ add_filter('excerpt_length', function () {
 
 // в php 7.4+ можно сократить так:
 add_filter('excerpt_more', fn() => '...');
+
+include 'breadcrumbs.php';
